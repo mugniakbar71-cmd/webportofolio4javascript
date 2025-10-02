@@ -1,0 +1,1147 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kelompok - JAVASCRIV</title>
+  <style>
+    :root{
+      --bg:#0f1724; /* dark blue-gray */
+      --card:#0b1220;
+      --accent:#7c3aed; /* purple */
+      --muted:#94a3b8;
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.12), transparent),
+                  radial-gradient(1000px 500px at 90% 90%, rgba(14,165,233,0.06), transparent),
+                  var(--bg);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:36px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:24px;
+    }
+
+    .container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr; /* selalu 1 kolom */
+  gap: 28px;
+}
+
+    /* left card */
+    .card{
+      background:linear-gradient(180deg,var(--card), rgba(48, 28, 28, 0.032));
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow: 0 6px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    .group-name{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+
+    .logo {
+  width: 62px;
+  height: 62px;
+  border-radius: 12px;
+  background: hsla(58, 99%, 54%, 0.985); /* kuning solid */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 22px;
+  color: #ffffff; /* teks putih */
+  box-shadow: 0 6px 20px rgba(255, 204, 0, 0.322); /* glow kuning */
+}
+
+    h1{font-size:20px;margin:0}
+    p.lead{color:var(--muted);margin:6px 0 0;font-size:13px}
+
+    .meta{display:flex;gap:10px;margin-top:16px}
+    .meta .pill{background:var(--glass);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
+
+    .members{margin-top:18px}
+    .member{display:flex;gap:12px;align-items:center;padding:8px;border-radius:10px;background:linear-gradient(180deg, rgba(54, 53, 53, 0.299), transparent);margin-bottom:8px}
+    .avatar{width:44px;height:44px;border-radius:10px;overflow:hidden;flex-shrink:0}
+    .avatar img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+    .m-name{font-weight:600}
+    .m-role{font-size:12px;color:var(--muted)}
+
+    /* right column */
+    .content{
+      display:flex;flex-direction:column;gap:18px;
+    }
+
+    .toolbar{display:flex;justify-content:space-between;align-items:center}
+    .search{display:flex;gap:10px;align-items:center}
+    .search input{background:var(--glass);border:0;padding:10px 12px;border-radius:10px;color:inherit;outline:none;width:260px}
+    .btn{background:linear-gradient(90deg,var(--accent), #06b6d4);padding:10px 14px;border-radius:10px;border:0;color:white;font-weight:600;cursor:pointer}
+
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:12px;padding:18px;border:1px solid rgba(255,255,255,0.03)}
+    .panel h2{margin:0 0 8px 0}
+    .topics{display:flex;gap:12px;flex-wrap:wrap}
+    .topic{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,0.02);cursor:pointer;border:1px solid rgba(255,255,255,0.02)}
+    .topic.active{background:linear-gradient(90deg,var(--accent), #06b6d4);color:#001;} 
+
+    .material{margin-top:12px}
+    .material h3{margin:0 0 6px 0}
+    .material p{color:var(--muted);margin:0 0 12px 0}
+
+    .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    .file-card{padding:12px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.02)}
+    .file-card h4{margin:0 0 6px 0}
+    .file-card p{margin:0;font-size:13px;color:var(--muted)}
+
+    footer{margin-top:8px;font-size:12px;color:var(--muted)}
+
+    @media (max-width:900px){
+      .container{grid-template-columns:1fr; padding:0}
+      body{padding:20px}
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <!-- Left: Group info -->
+    <section class="card">
+      <div class="group-name">
+        <div class="logo">JS</div>
+        <div>
+          <h1>JAVASCRIPT</h1>
+          <p class="lead">Kelompok 4</p>
+        </div>
+      </div>
+
+      <div class="meta">
+        <div class="pill">Angkatan: 2025</div>
+        <div class="pill">Kelompok: JavaScript</div>
+      </div>
+
+      <div style="margin-top:18px">
+        <button class="btn" onclick="alert('Terima kasih! :)')">selamat datang di kelompok kami :)</button>
+        <br>
+        <br>
+  <div class="panel">
+        <h2>SEJARAH JAVASCRIPT</h2>
+        <p>
+      JavaScript dibuat tahun 1995 oleh Brendan Eich di Netscape untuk menambah interaktivitas web. 
+      Awalnya bernama Mocha → LiveScript → JavaScript. Tahun 1997 distandardisasi jadi ECMAScript agar seragam di semua browser.
+    </p>
+    <img
+  src="https://ik.imagekit.io/etk1996mn/komputer%20jadul.png?updatedAt=1758882419181"
+  alt="Komputer Jadul"
+  class="foto-sedang"
+  loading="lazy"
+/>
+
+<style>
+  h2 {
+    margin: 0 0 10px 0;  /* judul rata kiri dengan jarak bawah */
+    text-align: left;    /* pastikan teks rata kiri */
+  }
+
+  .foto-sedang {
+    width: 210px;        /* lebar tetap */
+    height: auto;        /* tinggi menyesuaikan biar proporsional */
+    border-radius: 4px;
+    display: block;
+    margin: 0;           /* nempel ke kiri sejajar judul */
+  }
+</style>
+    <p>
+      Versi penting: ES3 (1999) membuatnya populer, ES5 (2009) menambahkan strict mode & JSON, 
+      lalu ES6 (2015) membawa perubahan besar seperti let/const, class, arrow function, module, dan promise. 
+      Setelah itu rilis tahunan terus menambah fitur modern seperti async/await dan optional chaining.
+    </p>
+    <p>
+      Kini JavaScript dipakai di front-end, back-end (Node.js), mobile, desktop, IoT, hingga AI, 
+      menjadikannya bahasa pemrograman paling populer di dunia.
+    </p>
+      
+
+<div class="topics" id="topics">
+        </div>
+        </div>
+        <br>
+        <div class="member-box">⌯⌲ GROUP</div>
+
+<style>
+  .member-box {
+    background-color: yellow; /* warna kuning */
+    color: white;             /* teks putih */
+    padding: 8px 16px;        /* jarak dalam */
+    border-radius: 20px;       /* sudut agak melengkung */
+    display: inline-block;    /* biar bentuknya kotak rapat */
+    font-weight: bold;        /* teks agak tebal */
+  }
+</style>
+
+        <h3 style="margin:14px 0 8px 0">✦ MENTOR</h3>
+        <div class="member">
+        <div class="avatar"><img src="https://ik.imagekit.io/hmyevskpb/IMG-20250915-teh%20tslusi.jpg?updatedAt=1758001248796" alt="Siti" /></div>
+          <div><div class="m-name">Tsulsi Khoirunisa</div><div class="m-role"><p>Nim:1247050119</p>Angkatan: 2024 Mentor</div></div>
+      </div>
+
+      <class="members">
+        <h3 style="margin:14px 0 8px 0">✦ ANGGOTA</h3>
+        <div class="member">
+          <div class="avatar"><img src="https://ik.imagekit.io/hmyevskpb/IMG-20250915-Lutfi.jpg?updatedAt=1758001669822" alt="Mugni" /></div>
+          <div><div class="m-name">Lutfi Alhamsyah</div><div class="m-role"><p>NIM:1257050117</p>Ketua</div></div>
+        </div>
+        <div class="member">
+          <div class="avatar"><img src="https://ik.imagekit.io/hmyevskpb/IMG-20250515-emmug.jpg?updatedAt=1757927780366" alt="Siti" /></div>
+          <div><div class="m-name">Mugni Akbar Darajat</div><div class="m-role"><p>NIM:1257050009</p>Anggota</div></div>
+        </div>
+        <div class="member">
+          <div class="avatar"><img src="https://ik.imagekit.io/hmyevskpb/SAVE_20250915_azmi.jpg?updatedAt=1757927484200" alt="Ari" /></div>
+          <div><div class="m-name">Azmi Fadilah</div><div class="m-role"><p>NIM:1257050027</p>Anggota</div></div>
+        </div>
+        <div class="member">
+          <div class="avatar"><img src="https://ik.imagekit.io/hmyevskpb/IMG-20250916-zahri.jpg?updatedAt=1758001571028" alt="Siti" /></div>
+          <div><div class="m-name">Zahri Nur Rasyiid</div><div class="m-role"><p>NIM:1257050010</p>Anggota</div></div>
+        </div>
+        <div class="member">
+          <div class="avatar"><img src="https://ik.imagekit.io/hmyevskpb/IMG-20250915-yaya.jpg?updatedAt=1757927454043" alt="Siti" /></div>
+          <div><div class="m-name">Zakiyya Hasna Kholilah</div><div class="m-role"><p>NIM:1257050028</p>Anggota</div></div>
+        </div>
+        <div class="member">
+          <div class="avatar"><img src="https://ik.imagekit.io/hmyevskpb/IMG-20250915-maya.jpg?updatedAt=1757928313890" alt="Siti" /></div>
+          <div><div class="m-name">Maya Nurul Mahmudiyyah</div><div class="m-role"><p>NIM:1257050082</p>Anggota</div></div>
+        </div>
+        <div class="member">
+          <div class="avatar"><img src="https://ik.imagekit.io/hmyevskpb/IMG-20250915-fakhry.jpg?updatedAt=1757927513042" alt="Siti" /></div>
+          <div><div class="m-name">Muhamad Fakhry</div><div class="m-role"><p>NIM:1257050132</p>Anggota</div></div>
+        </div>
+        <div class="member">
+          <div class="avatar"><img src="https://ik.imagekit.io/hmyevskpb/muhamad%20abyan%20azfakamal.jpg?updatedAt=1758018008443" alt="Siti" /></div>
+          <div><div class="m-name">Muhamad Abyan Azfakamal</div><div class="m-role"><p>NIM:1257050085</p>Anggota</div></div>
+        </div>
+        <div class="member">
+          <div class="avatar"><img src="https://ik.imagekit.io/hmyevskpb/IMG-20250915-WA0052.jpg?updatedAt=1757926245595" alt="Siti" /></div>
+          <div><div class="m-name">Nabhan Gigis Abdul Aziz</div><div class="m-role"><p>NIM:1257050038</p>Anggota</div></div>
+        </div>
+      </div>
+
+      <div style="margin-top:18px">
+        <button class="btn" onclick="alert('Nungguin yaa :)')">lanjutkan</button>
+        <footer>╰┈➤</footer>
+      </div>
+    </section>
+
+    <!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Materi JavaScript</title>
+  <style>
+    :root {
+      --bg:#0b0b0bdb;
+      --card:#0d0c0cf0;
+      --muted:#475569;
+      --glass:rgba(2,6,23,0.04);
+      color:#ebf1f4;
+    }
+    body {
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:var(--bg);
+      color:inherit;
+      min-height:100vh;
+    }
+    .content { padding:1rem 2rem; }
+    .toolbar {
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:1rem;
+    }
+    .search input {
+      padding:0.5rem;
+      border:1px solid var(--glass);
+      border-radius:6px;
+    }
+    button {
+      padding:0.5rem 1rem;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+      background:#3b82f6;
+      color:#fff;
+    }
+    .topics {
+      display:flex;
+      flex-wrap:wrap;
+      gap:0.5rem;
+      margin-bottom:1rem;
+    }
+    .topic {
+      padding:0.4rem 0.6rem;
+      cursor:pointer;
+      border-radius:20px;
+      background:var(--glass);
+    }
+    .topic.active {
+      background:#3b82f6;
+      color:#fff;
+    }
+    .card-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+      gap:1rem;
+      margin-top:1rem;
+    }
+    .file-card {
+      background:var(--card);
+      border:1px solid var(--glass);
+      border-radius:10px;
+      padding:1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar">
+  <div class="search">
+    <input id="search" type="text" placeholder="Cari materi..." />
+    <button type="button">Cari</button>
+  </div>
+</div>
+
+<style>
+.search {
+  display: flex;
+  align-items: center;
+}
+
+.search input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px 0 0 8px;   /* kiri bulat */
+  font-size: 14px;
+  width: 500px;
+}
+
+.search button {
+  padding: 8px 16px;
+  background: #0077ff;         /* biru */
+  color: #fff;                 /* teks putih */
+  border: 1px solid #0077ff;
+  border-radius: 0 8px 8px 0;   /* kanan bulat */
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.search button:hover {
+  background: #005dc1;         /* biru lebih gelap saat hover */
+  border-color: #005dc1;
+}
+</style>
+
+  <div class="sections">
+  <!-- Pembuakaan -->
+  <div class="section">
+    <h1>Pembukaan</h1>
+    <div class="topics">
+      <div class="topic active" data-topic="Stadium_Generale" onclick="selectTopic(event)">Stadium Generale</div>
+      <div class="topic" data-topic="Ekspektasi" onclick="selectTopic(event)">Ekspektasi</div>
+      <div class="topic" data-topic="Pengenalan_Himatif" onclick="selectTopic(event)">Pengenalan Himatif</div>
+    </div>
+  </div>
+
+  <!-- Mabim Satu -->
+  <div class="section">
+    <h1>Mabim Satu</h1>
+    <div class="topics">
+      <div class="topic" data-topic="wahyu_memandu_ilmu" onclick="selectTopic(event)">Wahyu Memandu Ilmu</div>
+      <div class="topic" data-topic="logika" onclick="selectTopic(event)">logika</div>
+      <div class="topic" data-topic="keinformatikaan" onclick="selectTopic(event)">keinformatikaan</div>
+    </div>
+  </div>
+
+  <!-- Mabim Dua -->
+  <div class="section">
+    <h1>Mabim Dua</h1>
+    <div class="topics">
+      <div class="topic" data-topic="alur_dan_adfokasi" onclick="selectTopic(event)">alur dan advokasi</div>
+      <div class="topic" data-topic="manajemen_waktu" onclick="selectTopic(event)">manajemen waktu</div>
+      <div class="topic" data-topic="FGD" onclick="selectTopic(event)">FGD</div>
+    </div>
+  </div>
+</div>
+
+<!-- area materi -->
+<div id="material-area">
+  <h3>Silakan pilih materi di atas 🔎</h3>
+</div>
+
+  
+  <style>
+  .topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .topic {
+    display: inline-block;
+    padding: 4px 10px;     /* lebih kecil */
+    border-radius: 12px;   /* biar lonjong */
+    cursor: pointer;
+    font-size: 13px;       /* kecil */
+    width: fit-content;
+    white-space: nowrap;
+    transition: 0.2s;
+    background: none;      /* hilangin abu-abu */
+    border: 1px solid transparent; /* biar rapih */
+  }
+
+  .topic:hover {
+    border-color: #ccc;   /* garis tipis pas hover */
+  }
+
+  .topic.active {
+    background: #0077ff;
+    color: white;
+    font-weight: 600;
+  }
+</style>
+
+<script>
+function selectTopic(e){
+  const el = e.currentTarget;
+  document.querySelectorAll('.topic').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  const topic = el.dataset.topic;
+  const area = document.getElementById('material-area');
+
+  const content = {
+    Stadium_Generale:{
+      title:'MONITOR 2025 – Stadium Generale',
+      desc:`
+        <h4>Masa Orientasi Mahasiswa Teknik Informatika</h4>
+<p><b>Tema:</b> Membentuk Mahasiswa Teknik Informatika yang FAKTI dan Berdaya Saing dalam Menjawab Disrupsi Digital di Era Society 5.0</p>
+
+<img
+  src="https://ik.imagekit.io/etk1996mn/IMG-20250924-WA0009.jpg?updatedAt=1758687618135"
+  alt="Foto Masa Orientasi Mahasiswa Teknik Informatika — Monitor 2025"
+  style="max-width:600px; width:100%; border-radius:12px; display:block; margin:15px auto;"
+  loading="lazy"
+/>
+        <p><b>Pemateri:</b> Ibu Dian Sa’adillah Maylawati & M. Falih Maulana</p>
+        <p><i>"Menjadi lulusan Prodi Teknik Informatika yang unggul, kompetitif, dan inovatif berlandaskan Rahmatan lil ‘alamin dalam bidang Kecerdasan Artifisial."</i></p>
+        <h5>Pokok Materi:</h5>
+        <ol>
+          <li>Pengenalan Jurusan TI</li>
+          <li>Sistem Akademik (Kurikulum 147 SKS)</li>
+          <li>Layanan Administrasi dan Surat Menyurat – Call Center: <b>0821-1938-9338</b></li>
+          <li>Fasilitas dan Layanan Penunjang</li>
+          <li>Etika Akademik</li>
+        </ol>
+        <h5>Profil Lulusan:</h5>
+        <ul>
+          <li>Mengetahui bidang Informatika</li>
+          <li>Mampu merancang dan mengimplementasikan sistem</li>
+          <li>Siap bersaing di era digital</li>
+        </ul>
+        <h5>Administrasi Akademik:</h5>
+        <ul>
+          <li>Asesmen OBI menjadi salah satu syarat PMK</li>
+          <li>PMB, Registrasi, KRS, PBAK, NIM, Perpindahan Mahasiswa</li>
+          <li>Bimbingan Akademik & Cuti Kuliah</li>
+        </ul>
+        <h5>Layanan Fakultas:</h5>
+        <ul>
+          <li><a href="https://s.id/FST_Ink" target="_blank">Link Layanan Fakultas</a></li>
+          <li><a href="https://linktr.ee/muimusa" target="_blank">Linktree Fakultas</a></li>
+        </ul>
+        <h5>Fasilitas Laboratorium:</h5>
+        <ul>
+          <li>Lab Pendidikan: AI-1, DE-17</li>
+          <li>Lab Riset: AI-2, DC-2</li>
+          <li>Ruang Diskusi: 4.07</li>
+          <li>Podcast: Lt. 3</li>
+        </ul>
+      `,
+      files: []
+    },
+    Ekspektasi:{
+  title:'Ekspektasi',
+  desc:`
+
+    <img
+  src="https://ik.imagekit.io/etk1996mn/kang%20diman.jpg?updatedAt=1758708383301"
+  alt="Foto Masa Orientasi Mahasiswa Teknik Informatika — Monitor 2025"
+  style="max-width:600px; width:100%; border-radius:12px; display:block; margin:15px auto;"
+  loading="lazy"
+/>
+    <p><b>Pemateri:</b> Kang Diman Faturohman</p>
+    <p>Ekspektasi adalah sesuatu yang kita bayangkan atau harapkan akan terjadi di masa depan. Ia bisa berupa:</p>
+    <ul>
+      <li>Harapan atas hasil yang kita inginkan.</li>
+      <li>Keinginan yang muncul dari dalam diri untuk dicapai.</li>
+      <li>Prediksi terhadap sesuatu yang mungkin akan terjadi.</li>
+      <li>Bayangan tentang masa depan yang kita rancang.</li>
+      <li>Pandangan bagaimana sesuatu seharusnya berjalan.</li>
+      <li>Imajinasi yang memberi motivasi untuk terus berusaha.</li>
+    </ul>
+
+    <h3>Jenis Ekspektasi</h3>
+    <ol>
+      <li><b>Realistis</b> → harapan yang sesuai dengan kemampuan, usaha, dan situasi.</li>
+      <li><b>Tidak realistis</b> → harapan yang terlalu tinggi tanpa mempertimbangkan kondisi nyata.</li>
+    </ol>
+
+    <h3>Ekspektasi yang Harus Ditanamkan & Dihafal oleh Angkatan 2025</h3>
+    <ol>
+      <li>Mandiri → mampu menyelesaikan masalah tanpa selalu bergantung pada orang lain.</li>
+      <li>Efektif → bisa menggunakan waktu, tenaga, dan sumber daya dengan tepat.</li>
+      <li>Bertanggung jawab → berani menanggung konsekuensi dari setiap tindakan.</li>
+      <li>Solutif → mampu memberikan solusi nyata ketika menghadapi masalah.</li>
+      <li>Leadership → memiliki jiwa kepemimpinan untuk mengarahkan dan menginspirasi.</li>
+      <li>Percaya diri → yakin pada kemampuan sendiri tanpa ragu.</li>
+      <li>Responsif → cepat tanggap terhadap situasi dan perubahan.</li>
+      <li>Kritis → mampu menganalisis, menilai, dan memberi masukan dengan bijak.</li>
+      <li>Memahami sistem pembelajaran di kampus serta lebih dalam jurusan → tidak hanya mengikuti, tapi juga menguasai sistem akademik dan bidang keilmuan.</li>
+      <li>Disiplin → konsisten dalam waktu, aturan, dan tanggung jawab.</li>
+      <li>Integritas → menjunjung kejujuran, etika, dan nilai yang benar.</li>
+      <li>Kolaboratif → mampu bekerja sama dengan baik dalam tim.</li>
+      <li>Inovatif → berani menghadirkan ide-ide baru yang bermanfaat.</li>
+      <li>Adaptif → bisa menyesuaikan diri dengan kondisi atau tantangan baru.</li>
+      <li>Komunikatif → mampu menyampaikan ide dan pendapat dengan jelas.</li>
+    </ol>
+  `,
+  files: []
+},
+    Pengenalan_Himatif:{
+  title: 'Pengenalan Himatif',
+  desc: `
+    <p>Himatif merupakan himpunan yang ada di bawah naungan jurusan Teknik Informatika, yang di dalamnya terdiri dari beberapa bidang:</p>
+
+    <h4>Ex-Officio</h4>
+    <ul>
+      <li>Ketua: Diman Fathurohman</li>
+      <li>Sekretaris Umum 1: Danny Suggi Saputra</li>
+      <li>Sekretaris Umum 2: Ahmad Juaeni Yunus</li>
+      <li>Bendahara Umum 1: Kania Sailanul Anjani</li>
+      <li>Bendahara Umum 2: Dailfhiana Fujianti</li>
+    </ul>
+
+    <h4>PAO</h4>
+    <ul>
+      <li>Ketua: Angga Agustian</li>
+      <li>Sekretaris: Adil Zukhruf Firdaus</li>
+      <li>Bendahara: Dionne Raissa Ivana</li>
+      <li>Anggota:
+        <ol>
+          <li>Fahad Muhammad Alfarizik</li>
+          <li>Alfian Akbar D.</li>
+          <li>Irham Muta'alimin</li>
+          <li>Najhan Asyhab</li>
+        </ol>
+      </li>
+    </ul>
+
+    <h4>Sosmas</h4>
+    <ul>
+      <li>Ketua: Muhammad Fikri Ramadhan</li>
+      <li>Sekretaris: Ariq Alfarizi</li>
+      <li>Bendahara: Nazwa Kholifah</li>
+      <li>Anggota:
+        <ol>
+          <li>Kemal Muhamad Zaki</li>
+          <li>Muhamad Naufal Fadhilah</li>
+          <li>Haidar Rafa Radinka</li>
+        </ol>
+      </li>
+    </ul>
+
+    <h4>Keislaman</h4>
+    <ul>
+      <li>Ketua: Irma Rohmatillah</li>
+      <li>Sekretaris: Jashima Fitrariya</li>
+      <li>Bendahara: Avina Najla Khoerunnisa</li>
+      <li>Anggota:
+        <ol>
+          <li>Riana Shofiatul Khoeriyah</li>
+          <li>Muhammad Giast Almunawwar</li>
+        </ol>
+      </li>
+    </ul>
+
+    <h4>Kastrad</h4>
+    <ul>
+      <li>Ketua: LM Irsal Shydiq</li>
+      <li>Sekretaris: Aura Ghifarani</li>
+      <li>Bendahara: Aditya Rahman Sycah</li>
+      <li>Anggota:
+        <ol>
+          <li>Gilang Rizki Ramadhan</li>
+          <li>Ziyadul Quwwah Ahmad Yasin</li>
+        </ol>
+      </li>
+    </ul>
+
+    <h4>Nalar dan Intelektual</h4>
+    <ul>
+      <li>Ketua: Alhan Husen</li>
+      <li>Sekretaris: Marisah Lofiana</li>
+      <li>Bendahara: Eka Maysa Rahma</li>
+      <li>Anggota:
+        <ol>
+          <li>Aria Octavian Hamza</li>
+          <li>Muhammad Faraby T</li>
+          <li>Muhammad Fatih M</li>
+          <li>Diaz Driansyah</li>
+        </ol>
+      </li>
+    </ul>
+
+    <h4>Kominfo</h4>
+    <ul>
+      <li>Ketua: Akhmad Ridho Rifa'i</li>
+      <li>Sekretaris: Shafa Dea Secaria</li>
+      <li>Bendahara: Lutfhi Afiyah</li>
+      <li>Anggota:
+        <ol>
+          <li>Nabila Nuril Karim</li>
+          <li>Karimah Ulya Hermawan</li>
+          <li>Farhan Fajar Mutaqien</li>
+          <li>Muhammad Alif Muafiq Bidzikrillah</li>
+          <li>Fathan Rafif Athaya</li>
+        </ol>
+      </li>
+    </ul>
+
+    <h4>Kewirausahaan</h4>
+    <ul>
+      <li>Ketua: Daffa Rabbani</li>
+      <li>Sekretaris: Annisa Rasha</li>
+      <li>Bendahara: Raflhy Nur Ramadhan</li>
+      <li>Anggota:
+        <ol>
+          <li>Naila Aghna Aulia P</li>
+          <li>R. Ersa Putri Sulaksana</li>
+          <li>Muhammad Asad Farhan</li>
+        </ol>
+      </li>
+    </ul>
+
+    <h4>Senior</h4>
+    <ul>
+      <li>Ketua: Abdul Latif Dzuhri</li>
+      <li>Sekretaris: Firman Adi Nugraha</li>
+      <li>Bendahara: Fatma Robbaniyyah</li>
+      <li>Anggota:
+        <ol>
+          <li>Elsa Siti Maryam</li>
+          <li>Diah Khairunisa Maula</li>
+          <li>Dicki Ramadhan</li>
+          <li>Arip Munandar</li>
+        </ol>
+      </li>
+    </ul>
+
+    <h4>Komunitas Senior</h4>
+    <ul>
+      <li>Seni: Elsa Siti Maryam</li>
+      <li>E-sport: Daffa Najmuddin Hanif</li>
+      <li>Futsal: Aldy Permana</li>
+      <li>Badminton: Muhammad Fauzan Lubada</li>
+      <li>Voli: David Aradea Mahdavikia</li>
+      <li>Basket: Danu Trisna Juwana</li>
+      <li>Hiker: Farhan Munir Rohmatullah</li>
+    </ul>
+  `,
+  files: []
+},
+  wahyu_memandu_ilmu:{
+    title:'wahyu memandu ilmu',
+    desc:`<hr\>
+    <H1><b>✎ᝰ. Materi: Wahyu Memandu Ilmu</b></H1>
+
+    <img
+  src="https://ik.imagekit.io/etk1996mn/Wahyu%20memandu%20ilmu.jpg?updatedAt=1759135355937"
+  alt="Foto Masa Orientasi Mahasiswa Teknik Informatika — Monitor 2025"
+  style="max-width:600px; width:100%; border-radius:12px; display:block; margin:15px auto;"
+  loading="lazy"
+/>
+
+    <p><b>Pemateri:</b> Dr. Cepy Slamet, M.Kom<br/>
+    <b>Moderator:</b> Kang Hanif</p>
+
+    <h3>Asbabul Buruz (Hadis)</h3>
+    <p>Setiap pengembangan keilmuan harus didasari/berlandaskan wahyu (Al-Qur’an).</p>
+
+    <h3>Relevansi bagi Mahasiswa Informatika</h3>
+    <ul>
+      <li>Wahyu menjadi dasar dalam pengembangan ilmu pengetahuan.</li>
+      <li>Teknologi digunakan secara efektif dan efisien.</li>
+      <li>Fondasi SKS untuk kesuksesan mahasiswa Informatika Fakultas Sains dan Teknologi UIN Sunan Gunung Djati Bandung.</li>
+    </ul>
+
+    <h3>Roda Kesuksesan Paradigma SKS</h3>
+    <ul>
+      <li><b>Syukur</b> – Ucapan/sikap yang menggambarkan rasa terima kasih kepada apapun yang kita dapat.</li>
+      <li><b>Komitmen</b> – Ikatan, kesanggupan, atau perjanjian untuk melakukan sesuatu secara konsisten dan bertanggung jawab.</li>
+      <li><b>Sabar</b> – Sikap menahan diri dan mengendalikan emosi dalam menghadapi situasi sulit.</li>
+    </ul>
+
+    <h3>3 Dimensi Syukur menurut Imam Ghazali</h3>
+    <ol>
+      <li><b>Ilmu</b> – Meyakini bahwa segala kenikmatan adalah karunia dari Allah SWT.</li>
+      <li><b>Hal</b> – Menyatakan kegembiraan atas nikmat yang diterima.</li>
+      <li><b>Amal</b> – Menggunakan nikmat dengan ketaatan sesuai ketentuan Allah SWT.</li>
+    </ol>`,
+    files: []
+  },
+  logika:{
+    title:'logika',
+    desc:`<hr/>
+    <h1>✎ᝰ. Pengantar Logika</h1>
+
+    <img
+  src="https://ik.imagekit.io/etk1996mn/logika.jpg?updatedAt=1759135330416"
+  alt="Foto Masa Orientasi Mahasiswa Teknik Informatika — Monitor 2025"
+  style="max-width:600px; width:100%; border-radius:12px; display:block; margin:15px auto;"
+  loading="lazy"
+/>
+
+  <p><b>Pemateri:</b> Diaz Muhammad Azhar Azqia</p>
+
+  <h2>Pengertian Logika</h2>
+  <ul>
+    <li>Ilmu tentang cara berpikir <b>benar</b> dan <b>sistematis</b>.</li>
+    <li>Membantu membedakan argumen yang <b>valid</b> dan <b>tidak valid</b>.</li>
+    <li>Kebenaran logika dipertimbangkan dari diri sendiri dan konsistensi berpikir.</li>
+  </ul>
+
+  <h2>Kesalahan Berpikir (Fallacy)</h2>
+  <div class="fallacy">
+    <ul>
+      <li><b>Ad Hominem:</b> Menyerang pribadi, bukan argumen.</li>
+      <li><b>Bandwagon:</b> Ikut-ikutan karena mayoritas percaya.</li>
+      <li><b>False Cause:</b> Menganggap dua hal berhubungan sebab-akibat padahal tidak.</li>
+      <li><b>Generalisasi Berlebihan:</b> Menarik kesimpulan umum dari sampel kecil.</li>
+    </ul>
+  </div>`,
+    files: []
+  },
+  keinformatikaan:{
+    title:'keinformatikaan',
+    desc:`<hr/>
+<h1>✎ᝰ. Materi: Keinformatikaan</h1>
+<img
+  src="https://ik.imagekit.io/etk1996mn/IMG-keinformatikaan.jpg?updatedAt=1758813993351"
+  alt="Foto Masa Orientasi Mahasiswa Teknik Informatika — Monitor 2025"
+  style="max-width:600px; width:100%; border-radius:12px; display:block; margin:15px auto;"
+  loading="lazy"
+/>
+
+
+<p><strong>Pemateri:</strong> Kang Fatih Maulana</p>
+
+
+<h2>Definisi</h2>
+<p>Keinformatikaan adalah bagaimana dan sedalam apa kita mengenal jurusan kita. Jalan terbaik untuk memprediksi masa depan adalah dengan kita membuat jalannya sendiri.</p>
+
+
+<h2>Bidang-bidang Informatika di Dunia Kerja</h2>
+<ol>
+<li>Software Engineering: membuat, merancang, memelihara software</li>
+<li>AI: membuat kecerdasan buatan</li>
+<li>Web Development: membangun website dan aplikasi berbasis web</li>
+<li>Network and Cloud: membangun infrastruktur jaringan virtual</li>
+<li>Blockchain and Cryptography: teknologi desentralisasi untuk mencatat transaksi digital secara aman</li>
+</ol>
+
+
+<h2>Tantangan sebagai MABA</h2>
+<ol>
+<li>Adaptasi</li>
+<li>Banyak pilihan bikin bingung</li>
+<li>Tekanan sosial: membandingkan diri dengan orang lain</li>
+<li>Distraksi dan arah yang belum jelas</li>
+</ol>
+
+
+<h2>Pentingnya Menentukan Tujuan</h2>
+<ol>
+<li>Tanpa tujuan, kita seperti kapal tanpa arah</li>
+<li>Tujuan = kompas biar tahu jalan pas kuliah</li>
+<li>Ada prinsip: sederhana dulu saja tidak apa-apa, yang penting ada</li>
+</ol>
+
+
+<h2>Ikigai (Manfaat atau Nilai Hidup)</h2>
+<p>Cara menentukan nilai hidup adalah kita harus menentukan irisan tengah terlebih dahulu:</p>
+<ul>
+<li>What you love: hal apa yang paling disukai</li>
+<li>What you're good at: paling bisa di bidang apa</li>
+<li>What the world needs: yang paling dibutuhkan dunia sekarang</li>
+<li>What you can be paid for: dari diri kamu, apa yang bisa dibayar (jasa, bakat, dll)</li>
+</ul>
+
+
+<h2>S.M.A.R.T Goals Model</h2>
+<ul>
+<li>Specific: jelas</li>
+<li>Measurable: bisa diukur</li>
+<li>Achievable: realistis</li>
+<li>Relevant: sesuai jurusan atau minat</li>
+<li>Time-bound: ada target waktu</li>
+</ul>
+<p>Contoh: "Saya ingin membuat web portofolio dengan HTML, CSS, JavaScript dalam 3 bulan"</p>
+
+<h2>Study Case</h2>
+<ol>
+<li>Tentukan Ikigaimu sendiri</li>
+<li>Buat S.M.A.R.T</li>
+</ol>
+
+<h2>Langkah Membuat Website (Roadmap)</h2>
+<h3>Minggu 1 - Dasar struktur dan tampilan (HTML + CSS)</h3>
+<p>Tujuan: membuat halaman sederhana dengan teks, gambar, link, tabel, dan form</p>
+<ul>
+<li>Hari 1-2: belajar dasar HTML -> struktur halaman, heading, dll.</li>
+<li>Hari 3-4: belajar dasar CSS</li>
+<li>Hari 5-6: latihan</li>
+<li>Hari 7: mini project</li>
+</ul>
+
+<h3>Minggu 2 - Interaktivitas Dasar (JavaScript)</h3>
+<p>Tujuan: menambahkan logika sederhana agar website interaktif</p>
+<ul>
+<li>Hari 1-2: belajar dasar JavaScript</li>
+<li>Hari 3-4: DOM Manipulation</li>
+<li>Hari 5-6: tambahkan form sederhana</li>
+<li>Hari 7: mini project</li>
+</ul>
+
+<h3>Minggu 3 - Publish and Showcase (Github Pages)</h3>
+<ul>
+<li>Hari 1-2: struktur project</li>
+<li>Hari 3-4: tambah konten</li>
+<li>Hari 5: belajar Git dan Github dasar</li>
+<li>Hari 6: deploy ke Github Pages</li>
+<li>Hari 7: finalisasi + presentasi ke teman atau ke kelas</li>
+</ul>`,
+    files: []
+  },
+  alur_dan_adfokasi:{
+    title:'alur dan adfokasi',
+    desc:`
+    <h2>Alur dan Advokasi</h2>
+
+    <img
+  src="https://ik.imagekit.io/73upkuudf/IMG-20251001-WA0121.jpg?updatedAt=1759322195491"
+  alt="Foto Masa Orientasi Mahasiswa Teknik Informatika — Monitor 2025"
+  style="max-width:600px; width:100%; border-radius:12px; display:block; margin:15px auto;"
+  loading="lazy"
+/>
+
+    <p><b>Pemateri:</b> Kang Ansyarullah S.T. (Ketua SEMA-FST 2023-2024)</p>
+
+    <h3>Apa itu Advokasi?</h3>
+    <p>Advokasi adalah upaya atau tindakan yang bertujuan untuk melakukan pembelaan, dukungan, atau memberikan rekomendasi kepada pihak lain.
+    Tujuannya adalah agar suara atau aspirasi yang disampaikan dapat diperhatikan oleh masyarakat luas dan, yang paling penting, oleh para pembuat kebijakan secara langsung.</p>
+
+    <h3>Landasan Advokasi</h3>
+    <ul>
+      <li>SK Dirjen Pendis No. 3814 Tahun 2024</li>
+      <li>AD/ART HIMATIF Tahun 2025</li>
+      <li>Juknis Kode Etik & Tata Tertib Mahasiswa UIN Bandung</li>
+      <li>Ketetapan SEMA-FST Tentang Pedoman Advokasi</li>
+      <li>Peraturan Senat Mahasiswa FST (Persema-FST)</li>
+    </ul>
+
+    <h3>Alur Advokasi</h3>
+    <ol>
+      <li><b>Internal Mahasiswa:</b> Masalah ditampung oleh ketua angkatan/kelas dan didiskusikan antar mahasiswa sebagai langkah awal mencari solusi.</li>
+      <li><b>Jurusan:</b> Aspirasi yang belum selesai naik ke HMJ (HIMATIF), khususnya Divisi Advokasi, untuk dikaji dan dibahas bersama birokrasi jurusan.</li>
+      <li><b>Fakultas:</b> Permasalahan lintas jurusan ditangani DEMA-FST melalui Divisi Advokasi dengan tindak lanjut berupa edukasi atau program kerja.</li>
+      <li><b>Birokrasi:</b> SEMA-FST berperan sebagai pengawas, mengelola masalah dari HMJ dan DEMA-FST, lalu diadvokasi bersama birokrasi fakultas.</li>
+    </ol>
+
+    <h3>Kritis adalah Identitas Mahasiswa</h3>
+    <ul>
+      <li><b>Landasan Intelektual:</b> Mahasiswa wajib menganalisis kebijakan, bukan sekadar menerima.</li>
+      <li><b>Tujuan Kritis:</b> Mengidentifikasi ketidaksesuaian antara idealisme (hak) dan realita (implementasi kebijakan kampus).</li>
+      <li><b>Kesadaran Diri:</b> Mengetahui peran ganda: sebagai pelajar (akademik) dan sebagai agen perubahan (sosial).</li>
+      <li><b>Implikasi di HIMATIF:</b> Mampu membedakan masalah personal vs. masalah kolektif yang layak diadvokasi.</li>
+    </ul>
+
+    <h3>Etika Penyampaian Pendapat</h3>
+    <ul>
+      <li><b>Basis Data:</b> Setiap kritik harus didukung fakta, data, dan regulasi yang dilanggar.</li>
+      <li><b>Saluran Resmi:</b> Mengutamakan audiensi, surat resmi (HIMATIF ke Prodi/Fakultas), dan jalur dialog.</li>
+      <li><b>Bahasa Akademik:</b> Jauhi bahasa provokatif. Gunakan terminologi hukum/regulasi yang benar dan santun (sesuai Juknis Kode Etik).</li>
+      <li><b>Konsolidasi:</b> Pastikan aspirasi mewakili suara mayoritas mahasiswa, bukan kepentingan pribadi/kelompok kecil.</li>
+    </ul>
+
+    <h3>Kesimpulan</h3>
+    <p><b>Advokasi Berhasil Jika:</b></p>
+    <ul>
+      <li>Data Kuat: Bukan gosip, bukan emosi.</li>
+      <li>Prosedur Tepat: Mengikuti Alur Resmi (TAP Advokasi, Juknis).</li>
+      <li>Sinergi Ormawa: HIMATIF, DEMA, SEMA bekerja sama.</li>
+      <li>Beretika: Menjaga marwah almamater (Juknis Kode Etik).</li>
+    </ul>
+`,
+    files: []
+  },
+  manajemen_waktu:{
+    title:'manajemen waktu',
+    desc:`
+    <h2>Manajemen Waktu</h2>
+
+    <img
+  src="https://ik.imagekit.io/73upkuudf/IMG-20251001-WA0122.jpg?updatedAt=1759322195811"
+  alt="Foto Masa Orientasi Mahasiswa Teknik Informatika — Monitor 2025"
+  style="max-width:600px; width:100%; border-radius:12px; display:block; margin:15px auto;"
+  loading="lazy"
+/>
+
+    <p>Merencanakan, mengatur, dan mengendalikan waktu yang dimiliki agar dapat digunakan secara efektif dan efisien untuk mencapai tujuan tertentu.</p>
+
+    <h3>Prinsip-prinsip</h3>
+    <ul>
+      <li><b>Prioritas:</b> Menentukan mana yang lebih penting dan mendesak antara urusan akademik dan organisasi.</li>
+      <li><b>Batas waktu:</b> Membuat jadwal yang jelas agar tugas akademik dan kegiatan organisasi tidak saling bertabrakan.</li>
+      <li><b>Prokrastinasi:</b> Menunda tugas akademik atau organisasi sehingga akhirnya menumpuk.</li>
+    </ul>
+
+    <h2>Pengelolaan Stress</h2>
+    <p>Upaya mengendalikan tekanan fisik maupun mental agar tidak mengganggu aktivitas sehari-hari baik di bidang akademik maupun organisasi.</p>
+    <p><b>Pentingnya waktu luang dan istirahat?</b></p>
+    <p><b>Strategi:</b></p>
+    <ol>
+      <li>Atur waktu dengan baik</li>
+      <li>Istirahat cukup</li>
+      <li>Olahraga dan relaksasi</li>
+      <li>Manajemen prioritas</li>
+      <li>Cari dukungan sosial</li>
+    </ol>
+
+    <h2>Alat Pengukur dan Evaluasi</h2>
+    <p>Mengevaluasi aktivitas manajemen waktu, proses menilai apakah cara mengukur waktu yang dilakukan sudah membantu mahasiswa menyelesaikan tugas akademik, organisasi, dan aktivitas pribadi secara seimbang.</p>
+    <ol>
+      <li>Bandingkan rencana dengan realisasi</li>
+      <li>Identifikasi hambatan</li>
+      <li>Ukur produktivitas</li>
+      <li>Refleksi dan perbaikan</li>
+    </ol>
+
+    <h2>Rangkuman</h2>
+    <p>Manajemen waktu bukan hanya mengatur jadwal melainkan kemampuan mengendalikan diri melalui penetapan prioritas, disiplin terhadap batas waktu, serta evaluasi berkelanjutan.</p>
+  `,
+  files: []
+  },
+  FGD:{
+    title:'Efektivitas Presentasi Mahasiswa dalam Proses Perkuliahan: Solusi atau Pengganti Peran Dosen?',
+    desc:`
+
+    <img
+  src="https://ik.imagekit.io/etk1996mn/IMG-20251002-WA0040.jpg?updatedAt=1759383998684"
+  alt="Foto Masa Orientasi Mahasiswa Teknik Informatika — Monitor 2025"
+  style="max-width:600px; width:100%; border-radius:12px; display:block; margin:15px auto;"
+  loading="lazy"
+/>
+
+    <h2>PRO</h2>
+  <p>
+    Tentu efektivitas presentasi yang dilakukan mahasiswa sangat berpotensi luas dampaknya, 
+    di antaranya mahasiswa menjadi lebih memberanikan diri, percaya diri penuh, 
+    sehingga public speaking menjadi meningkat yang diselingi analisis-analisis informasi 
+    yang mereka dapatkan menjadi sebuah pembelajaran. Selain itu dengan mahasiswa menjadi 
+    sebuah public figure di dalam presentasi, mahasiswa lainnya dapat lebih interaktif 
+    karena pada dasarnya generasi Z lebih dapat berbicara kreatif dalam berdiskusi dengan mahasiswa lainnya.
+  </p>
+
+  <h2>KONTRA</h2>
+  <p>
+    Dalam menyampaikan materi (presentasi) itu ranahnya dosen, dimana dosen sebagai civitas akademik 
+    yang sudah ahli dalam dunia pendidikan selama bertahun-tahun tentu harus bisa menyeimbangkan materi 
+    yang lurus dan benar kepada mahasiswa, bukan membalikkan fakta. Sehingga mahasiswa dapat menghindari 
+    terjadinya miskonsepsi terhadap materi yang dipelajarinya.
+  </p>
+
+  <h2>KESIMPULAN</h2>
+  <p>
+    Jadi dari statement pro dan kontra kita bisa simpulkan bahwasannya dalam topik ini perlu kita cari solusi 
+    karena pada dasarnya mereka memiliki plus dan minus masing-masing. Maka dari itu dalam presentasi mahasiswa 
+    tetap perlu ruang untuk dia memberikan materi, akan tetapi perlu didampingi oleh dosen yang sudah ahli di 
+    sampingnya agar bisa meluruskan materinya.
+  </p>
+`,
+    files: []
+  }
+};
+
+
+  const chosen = content[topic];
+  area.innerHTML = `
+    <h3>${chosen.title}</h3>
+    <div>${chosen.desc}</div>
+    <div id="files" class="card-grid">
+      ${chosen.files.map(f=>`
+        <div class="file-card" data-title="${f[0]}">
+          <h4>${f[0]}</h4>
+          <p>${f[1]}</p>
+        </div>`).join('')}
+    </div>`;
+}
+
+function filterMaterials(){
+  const q = document.getElementById('search').value.toLowerCase();
+  document.querySelectorAll('#files .file-card').forEach(card=>{
+    const t = card.dataset.title || card.querySelector('h4').innerText;
+    card.style.display = t.toLowerCase().includes(q)?'block':'none';
+  });
+}
+
+let dark = false;
+function toggleDark(){
+  if(dark){
+    document.documentElement.style.setProperty('--bg','#f6f9fc');
+    document.documentElement.style.setProperty('--card','#ffffff');
+    document.documentElement.style.setProperty('--muted','#475569');
+    document.documentElement.style.setProperty('--glass','rgba(2,6,23,0.04)');
+    document.documentElement.style.setProperty('color','#04263a');
+    dark = false;
+  } else {
+    document.documentElement.style.setProperty('--bg','#0f1724');
+    document.documentElement.style.setProperty('--card','#0b1220');
+    document.documentElement.style.setProperty('--muted','#94a3b8');
+    document.documentElement.style.setProperty('--glass','rgba(255,255,255,0.04)');
+    document.documentElement.style.setProperty('color','#e6eef8');
+    dark = true;
+  }
+}
+const Album_KITA = {
+  title: "ALBUM KITA",
+  desc: `
+    <div style="margin-top:10px;">
+      <button onclick="toggleAlbum()" style="
+        padding:8px 16px;
+        border:none;
+        border-radius:8px;
+        background:rgba(255,255,255,0.02);
+        color:white;
+        font-weight:bold;
+        cursor:pointer;
+        font-size:14px;
+      ">Klik di sini</button>
+    </div>
+    <div id="album" style="display:none; margin-top:15px;">
+      <div style="
+        display:grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap:15px;
+      ">
+        <div style="position:relative;">
+          <img src="https://ik.imagekit.io/73upkuudf/pertemuan%20pertama.jpg?updatedAt=1759400117543" style="width:100%;height:180px;object-fit:cover;border-radius:12px;box-shadow:0 4px 8px rgba(0,0,0,0.25);transition:transform 0.3s;" alt="foto1" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <p style="position:absolute;bottom:8px;left:8px;color:white;background:rgba(0,0,0,0.5);padding:4px 8px;border-radius:6px;font-size:13px;">pertemuan pertama kita</p>
+        </div>
+        <div style="position:relative;">
+          <img src="https://ik.imagekit.io/etk1996mn/IMG-20250920-WA0010.jpg?updatedAt=1759400015428" style="width:100%;height:180px;object-fit:cover;border-radius:12px;box-shadow:0 4px 8px rgba(0,0,0,0.25);transition:transform 0.3s;" alt="foto2" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <p style="position:absolute;bottom:8px;left:8px;color:white;background:rgba(0,0,0,0.5);padding:4px 8px;border-radius:6px;font-size:13px;">ini mabim 1 seru pokonya</p>
+        </div>
+        <div style="position:relative;">
+          <img src="https://ik.imagekit.io/73upkuudf/denah.jpg?updatedAt=1759400117362" style="width:100%;height:180px;object-fit:cover;border-radius:12px;box-shadow:0 4px 8px rgba(0,0,0,0.25);transition:transform 0.3s;" alt="foto3" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <p style="position:absolute;bottom:8px;left:8px;color:white;background:rgba(0,0,0,0.5);padding:4px 8px;border-radius:6px;font-size:13px;">mempresentasikan denah keren kita</p>
+        </div>
+        <div style="position:relative;">
+          <img src="https://ik.imagekit.io/73upkuudf/mabim2.jpg?updatedAt=1759400117490" style="width:100%;height:180px;object-fit:cover;border-radius:12px;box-shadow:0 4px 8px rgba(0,0,0,0.25);transition:transform 0.3s;" alt="foto4" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <p style="position:absolute;bottom:8px;left:8px;color:white;background:rgba(0,0,0,0.5);padding:4px 8px;border-radius:6px;font-size:13px;">mabim 2 foto lagi ah cekrek</p>
+        </div>
+        <div style="position:relative;">
+          <img src="https://ik.imagekit.io/73upkuudf/setelah%20fgd.jpg?updatedAt=1759400117285" style="width:100%;height:180px;object-fit:cover;border-radius:12px;box-shadow:0 4px 8px rgba(0,0,0,0.25);transition:transform 0.3s;" alt="foto5" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <p style="position:absolute;bottom:8px;left:8px;color:white;background:rgba(0,0,0,0.5);padding:4px 8px;border-radius:6px;font-size:13px;">ini abis debat fgd seru parah</p>
+        </div>
+        <div style="position:relative;">
+          <img src="https://ik.imagekit.io/etk1996mn/IMG-20251002-WA0019.jpg?updatedAt=1759404284460" style="width:100%;height:180px;object-fit:cover;border-radius:12px;box-shadow:0 4px 8px rgba(0,0,0,0.25);transition:transform 0.3s;" alt="foto6" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <p style="position:absolute;bottom:8px;left:8px;color:white;background:rgba(0,0,0,0.5);padding:4px 8px;border-radius:6px;font-size:13px;">“Setiap gambar menyimpan cerita, dan setiap cerita menyimpan kenangan kita.”</p>
+        </div>
+      </div>
+    </div>
+  `
+};
+
+document.write(`
+  <div>
+    <span style="
+      display:inline-block;
+      background-color: #0077ff;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      width:auto;
+      max-width:max-content;
+    ">
+      ${Album_KITA.title}
+    </span>
+    ${Album_KITA.desc}
+  </div>
+`);
+
+function toggleAlbum(){
+  const album = document.getElementById("album");
+  if(album.style.display === "none"){
+    album.style.display = "block";
+  } else {
+    album.style.display = "none";
+  }
+}
+
+const PENUTUPAN = {
+  title: "PENUTUPAN",
+  desc: `
+    <div style="margin-top:12px;background:rgba(255,255,255,0.02);padding:15px;border-radius:12px;color:#ffffff;">
+  <p>Terima kasih telah melihat web kami🙌 .</p>
+  <p>Melalui projek sederhana ini, kami berupaya menumbuhkan semangat kebersamaan serta kepedulian sosial yang menjadi bagian dari rangkaian kegiatan monitor ini.</p>
+  <p>Harapan kami, semangat ini tidak berhenti di sini saja, melainkan terus berkembang dan mengiringi perjalanan kita sebagai mahasiswa ke depannya.</p>
+  <p>Dengan penuh rasa syukur, kami Kelompok JavaScript menyampaikan terima kasih.</p>
+  <p>Sampai jumpa pada karya dan kegiatan berikutnya 😎</p>
+</div>
+`
+};
+
+
+document.write(`
+  <div>
+    <span style="
+      display:inline-block;
+      background-color: yellow;
+      color: black;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      width:auto;
+      max-width:max-content;
+    ">
+      ${PENUTUPAN.title}
+    </span>
+    ${PENUTUPAN.desc}
+  </div>
+`);
+</script>
+</body>
+</html>
